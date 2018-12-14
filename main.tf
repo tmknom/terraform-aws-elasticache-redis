@@ -91,3 +91,10 @@ resource "aws_elasticache_replication_group" "default" {
   # A mapping of tags to assign to the resource.
   tags = "${merge(map("Name", var.name), var.tags)}"
 }
+
+# https://www.terraform.io/docs/providers/aws/r/elasticache_parameter_group.html
+resource "aws_elasticache_parameter_group" "default" {
+  name        = "${var.name}"
+  family      = "${var.family}"
+  description = "${var.description}"
+}

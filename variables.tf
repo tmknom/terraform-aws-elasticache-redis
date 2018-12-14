@@ -73,6 +73,12 @@ variable "apply_immediately" {
   description = "Specifies whether any modifications are applied immediately, or during the next maintenance window."
 }
 
+variable "family" {
+  default     = "redis5.0"
+  type        = "string"
+  description = "The family of the ElastiCache parameter group."
+}
+
 variable "description" {
   default     = "Managed by Terraform"
   type        = "string"
