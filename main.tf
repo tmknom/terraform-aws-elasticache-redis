@@ -105,3 +105,33 @@ resource "aws_elasticache_subnet_group" "default" {
   subnet_ids  = ["${var.subnet_ids}"]
   description = "${var.description}"
 }
+
+# https://www.terraform.io/docs/providers/aws/r/security_group.html
+resource "aws_security_group" "default" {
+  name   = "${local.security_group_name}"
+  vpc_id = "${var.vpc_id}"
+  tags   = "${merge(map("Name", local.security_group_name), var.tags)}"
+}
+
+locals {
+  security_group_name = "${var.name}-elasticache-redis"
+}
+
+# https://www.terraform.io/docs/providers/aws/r/security_group_rule.html
+resource "aws_security_group_rule" "ingress" {
+  type              = "ingress"
+  from_port         = "${var.port}"
+  to_port           = "${var.port}"
+  protocol          = "tcp"
+  cidr_blocks       = ["${var.ingress_cidr_blocks}"]
+  security_group_id = "${aws_security_group.default.id}"
+}
+
+resource "aws_security_group_rule" "egress" {
+  type              = "egress"
+  from_port         = 0
+  to_port           = 0
+  protocol          = "-1"
+  cidr_blocks       = ["0.0.0.0/0"]
+  security_group_id = "${aws_security_group.default.id}"
+}

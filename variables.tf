@@ -18,6 +18,16 @@ variable "subnet_ids" {
   description = "List of VPC Subnet IDs for the cache subnet group."
 }
 
+variable "vpc_id" {
+  type        = "string"
+  description = "VPC Id to associate with Redis ElastiCache."
+}
+
+variable "ingress_cidr_blocks" {
+  type        = "list"
+  description = "List of Ingress CIDR blocks."
+}
+
 variable "engine_version" {
   default     = "5.0.0"
   type        = "string"
