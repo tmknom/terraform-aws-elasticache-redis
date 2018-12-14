@@ -98,3 +98,10 @@ resource "aws_elasticache_parameter_group" "default" {
   family      = "${var.family}"
   description = "${var.description}"
 }
+
+# https://www.terraform.io/docs/providers/aws/r/elasticache_subnet_group.html
+resource "aws_elasticache_subnet_group" "default" {
+  name        = "${var.name}"
+  subnet_ids  = ["${var.subnet_ids}"]
+  description = "${var.description}"
+}

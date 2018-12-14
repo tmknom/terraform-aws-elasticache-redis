@@ -13,6 +13,11 @@ variable "node_type" {
   description = "The compute and memory capacity of the nodes in the node group."
 }
 
+variable "subnet_ids" {
+  type        = "list"
+  description = "List of VPC Subnet IDs for the cache subnet group."
+}
+
 variable "engine_version" {
   default     = "5.0.0"
   type        = "string"
