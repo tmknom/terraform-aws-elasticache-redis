@@ -64,12 +64,6 @@ variable "automatic_failover_enabled" {
   description = "Specifies whether a read-only replica will be automatically promoted to read/write primary if the existing primary fails."
 }
 
-variable "auto_minor_version_upgrade" {
-  default     = true
-  type        = "string"
-  description = "Specifies whether a minor engine upgrades will be applied automatically to the underlying Cache Cluster instances during the maintenance window."
-}
-
 variable "at_rest_encryption_enabled" {
   default     = true
   type        = "string"
