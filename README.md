@@ -8,11 +8,50 @@ Terraform module template following [Standard Module Structure](https://www.terr
 
 ## Usage
 
-Named `terraform-<PROVIDER>-<NAME>`. Module repositories must use this three-part name format.
+### Minimal
 
-```sh
-curl -fsSL https://raw.githubusercontent.com/tmknom/terraform-aws-elasticache-redis/master/install | sh -s terraform-aws-sample
-cd terraform-aws-sample && make install
+```hcl
+module "elasticache_redis" {
+  source                = "git::https://github.com/tmknom/terraform-aws-elasticache-redis.git?ref=tags/1.0.0"
+  name                  = "example"
+  number_cache_clusters = 2
+  node_type             = "cache.m3.medium"
+
+  subnet_ids          = ["${var.subnets}"]
+  vpc_id              = "${var.vpc_id}"
+  ingress_cidr_blocks = ["${var.ingress_cidr_blocks}"]
+}
+```
+
+### Complete
+
+```hcl
+module "elasticache_redis" {
+  source                = "git::https://github.com/tmknom/terraform-aws-elasticache-redis.git?ref=tags/1.0.0"
+  name                  = "example"
+  number_cache_clusters = 2
+  node_type             = "cache.m3.medium"
+
+  engine_version             = "5.0.0"
+  port                       = 56379
+  maintenance_window         = "mon:10:40-mon:11:40"
+  snapshot_window            = "09:10-10:10"
+  snapshot_retention_limit   = 1
+  automatic_failover_enabled = false
+  at_rest_encryption_enabled = false
+  transit_encryption_enabled = false
+  apply_immediately          = true
+  family                     = "redis5.0"
+  description                = "This is example"
+
+  subnet_ids          = ["${module.vpc.public_subnet_ids}"]
+  vpc_id              = "${module.vpc.vpc_id}"
+  ingress_cidr_blocks = ["${module.vpc.vpc_cidr_block}"]
+
+  tags = {
+    Environment = "prod"
+  }
+}
 ```
 
 ## Examples
