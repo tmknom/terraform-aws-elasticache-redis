@@ -6,6 +6,19 @@
 
 Terraform module which creates Redis ElastiCache resources on AWS.
 
+## Description
+
+Provision [ElastiCache_Replication_Group](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.html) and
+[Parameter Group](https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/ParameterGroups.html).
+
+This module provides recommended settings:
+
+- Enable Multi-AZ
+- Enable automatic failover
+- Enable at-rest encryption
+- Enable in-transit encryption
+- Enable automated backups
+
 ## Usage
 
 ### Minimal
@@ -17,7 +30,7 @@ module "elasticache_redis" {
   number_cache_clusters = 2
   node_type             = "cache.m3.medium"
 
-  subnet_ids          = ["${var.subnets}"]
+  subnet_ids          = ["${var.subnet_ids}"]
   vpc_id              = "${var.vpc_id}"
   ingress_cidr_blocks = ["${var.ingress_cidr_blocks}"]
 }
@@ -44,9 +57,9 @@ module "elasticache_redis" {
   family                     = "redis5.0"
   description                = "This is example"
 
-  subnet_ids          = ["${module.vpc.public_subnet_ids}"]
-  vpc_id              = "${module.vpc.vpc_id}"
-  ingress_cidr_blocks = ["${module.vpc.vpc_cidr_block}"]
+  subnet_ids          = ["${var.subnet_ids}"]
+  vpc_id              = "${var.vpc_id}"
+  ingress_cidr_blocks = ["${var.ingress_cidr_blocks}"]
 
   tags = {
     Environment = "prod"
