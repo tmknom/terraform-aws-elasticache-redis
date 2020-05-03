@@ -33,9 +33,9 @@ module "elasticache_redis" {
   number_cache_clusters = 2
   node_type             = "cache.m3.medium"
 
-  subnet_ids          = var.subnet_ids
-  vpc_id              = var.vpc_id
-  ingress_cidr_blocks = var.ingress_cidr_blocks
+  subnet_ids         = var.subnet_ids
+  vpc_id             = var.vpc_id
+  source_cidr_blocks = var.source_cidr_blocks
 }
 ```
 
@@ -60,9 +60,9 @@ module "elasticache_redis" {
   family                     = "redis5.0"
   description                = "This is example"
 
-  subnet_ids          = var.subnet_ids
-  vpc_id              = var.vpc_id
-  ingress_cidr_blocks = var.ingress_cidr_blocks
+  subnet_ids         = var.subnet_ids
+  vpc_id             = var.vpc_id
+  source_cidr_blocks = var.source_cidr_blocks
 
   tags = {
     Environment = "prod"
@@ -93,10 +93,10 @@ module "elasticache_redis" {
 
 | Name                       | Description                                                                                                               | Type           | Default                  | Required |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------- | ------------------------ | :------: |
-| ingress_cidr_blocks        | List of Ingress CIDR blocks.                                                                                              | `list(string)` | n/a                      |   yes    |
 | name                       | The replication group identifier. This parameter is stored as a lowercase string.                                         | `string`       | n/a                      |   yes    |
 | node_type                  | The compute and memory capacity of the nodes in the node group.                                                           | `string`       | n/a                      |   yes    |
 | number_cache_clusters      | The number of cache clusters (primary and replicas) this replication group will have.                                     | `string`       | n/a                      |   yes    |
+| source_cidr_blocks         | List of source CIDR blocks.                                                                                               | `list(string)` | n/a                      |   yes    |
 | subnet_ids                 | List of VPC Subnet IDs for the cache subnet group.                                                                        | `list(string)` | n/a                      |   yes    |
 | vpc_id                     | VPC Id to associate with Redis ElastiCache.                                                                               | `string`       | n/a                      |   yes    |
 | apply_immediately          | Specifies whether any modifications are applied immediately, or during the next maintenance window.                       | `bool`         | `false`                  |    no    |

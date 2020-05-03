@@ -16,9 +16,9 @@ module "elasticache_redis" {
   family                     = "redis5.0"
   description                = "This is example"
 
-  subnet_ids          = module.vpc.public_subnet_ids
-  vpc_id              = module.vpc.vpc_id
-  ingress_cidr_blocks = [module.vpc.vpc_cidr_block]
+  subnet_ids         = module.vpc.public_subnet_ids
+  vpc_id             = module.vpc.vpc_id
+  source_cidr_blocks = [module.vpc.vpc_cidr_block]
 
   tags = {
     Environment = "prod"
