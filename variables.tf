@@ -36,7 +36,7 @@ variable "engine_version" {
 
 variable "port" {
   default     = 6379
-  type        = string
+  type        = number
   description = "The port number on which each of the cache nodes will accept connections."
 }
 
@@ -53,8 +53,8 @@ variable "snapshot_window" {
 }
 
 variable "snapshot_retention_limit" {
-  default     = "30"
-  type        = string
+  default     = 30
+  type        = number
   description = "The number of days for which ElastiCache will retain automatic cache cluster snapshots before deleting them."
 }
 
