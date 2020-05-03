@@ -60,25 +60,25 @@ variable "snapshot_retention_limit" {
 
 variable "automatic_failover_enabled" {
   default     = true
-  type        = string
+  type        = bool
   description = "Specifies whether a read-only replica will be automatically promoted to read/write primary if the existing primary fails."
 }
 
 variable "at_rest_encryption_enabled" {
   default     = true
-  type        = string
+  type        = bool
   description = "Whether to enable encryption at rest."
 }
 
 variable "transit_encryption_enabled" {
   default     = true
-  type        = string
+  type        = bool
   description = "Whether to enable encryption in transit."
 }
 
 variable "apply_immediately" {
   default     = false
-  type        = string
+  type        = bool
   description = "Specifies whether any modifications are applied immediately, or during the next maintenance window."
 }
 
