@@ -33,8 +33,8 @@ module "elasticache_redis" {
   number_cache_clusters = 2
   node_type             = "cache.m3.medium"
 
-  subnet_ids          = var.subnet_ids
-  vpc_id              = var.vpc_id
+  subnet_ids         = var.subnet_ids
+  vpc_id             = var.vpc_id
   source_cidr_blocks = var.source_cidr_blocks
 }
 ```
@@ -60,8 +60,8 @@ module "elasticache_redis" {
   family                     = "redis5.0"
   description                = "This is example"
 
-  subnet_ids          = var.subnet_ids
-  vpc_id              = var.vpc_id
+  subnet_ids         = var.subnet_ids
+  vpc_id             = var.vpc_id
   source_cidr_blocks = var.source_cidr_blocks
 
   tags = {

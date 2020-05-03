@@ -4,8 +4,8 @@ module "elasticache_redis" {
   number_cache_clusters = 2
   node_type             = "cache.m3.medium"
 
-  subnet_ids          = module.vpc.public_subnet_ids
-  vpc_id              = module.vpc.vpc_id
+  subnet_ids         = module.vpc.public_subnet_ids
+  vpc_id             = module.vpc.vpc_id
   source_cidr_blocks = [module.vpc.vpc_cidr_block]
 }
 
