@@ -29,7 +29,7 @@ variable "ingress_cidr_blocks" {
 }
 
 variable "engine_version" {
-  default     = "5.0.0"
+  default     = "5.0.6"
   type        = string
   description = "The version number of the cache engine to be used for the cache clusters in this replication group."
 }
