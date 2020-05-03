@@ -23,9 +23,9 @@ variable "vpc_id" {
   description = "VPC Id to associate with Redis ElastiCache."
 }
 
-variable "ingress_cidr_blocks" {
+variable "source_cidr_blocks" {
   type        = list(string)
-  description = "List of Ingress CIDR blocks."
+  description = "List of source CIDR blocks."
 }
 
 variable "engine_version" {
