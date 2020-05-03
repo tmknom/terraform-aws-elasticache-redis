@@ -25,14 +25,14 @@ This module provides recommended settings:
 
 ```hcl
 module "elasticache_redis" {
-  source                = "git::https://github.com/tmknom/terraform-aws-elasticache-redis.git?ref=tags/1.0.0"
+  source                = "git::https://github.com/tmknom/terraform-aws-elasticache-redis.git?ref=tags/2.0.0"
   name                  = "example"
   number_cache_clusters = 2
   node_type             = "cache.m3.medium"
 
-  subnet_ids          = ["${var.subnet_ids}"]
-  vpc_id              = "${var.vpc_id}"
-  ingress_cidr_blocks = ["${var.ingress_cidr_blocks}"]
+  subnet_ids          = var.subnet_ids
+  vpc_id              = var.vpc_id
+  ingress_cidr_blocks = var.ingress_cidr_blocks
 }
 ```
 
@@ -40,7 +40,7 @@ module "elasticache_redis" {
 
 ```hcl
 module "elasticache_redis" {
-  source                = "git::https://github.com/tmknom/terraform-aws-elasticache-redis.git?ref=tags/1.0.0"
+  source                = "git::https://github.com/tmknom/terraform-aws-elasticache-redis.git?ref=tags/2.0.0"
   name                  = "example"
   number_cache_clusters = 2
   node_type             = "cache.m3.medium"
@@ -57,9 +57,9 @@ module "elasticache_redis" {
   family                     = "redis5.0"
   description                = "This is example"
 
-  subnet_ids          = ["${var.subnet_ids}"]
-  vpc_id              = "${var.vpc_id}"
-  ingress_cidr_blocks = ["${var.ingress_cidr_blocks}"]
+  subnet_ids          = var.subnet_ids
+  vpc_id              = var.vpc_id
+  ingress_cidr_blocks = var.ingress_cidr_blocks
 
   tags = {
     Environment = "prod"
