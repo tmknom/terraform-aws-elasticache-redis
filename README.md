@@ -114,7 +114,7 @@ module "elasticache_redis" {
 
 ## Development
 
-### Requirements
+### Development Requirements
 
 - [Docker](https://www.docker.com/)
 
