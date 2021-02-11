@@ -119,6 +119,7 @@ locals {
 
 # https://www.terraform.io/docs/providers/aws/r/security_group_rule.html
 resource "aws_security_group_rule" "ingress" {
+  count             = length(var.source_cidr_blocks) > 0 ? 1 : 0
   type              = "ingress"
   from_port         = var.port
   to_port           = var.port

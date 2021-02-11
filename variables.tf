@@ -26,6 +26,7 @@ variable "vpc_id" {
 variable "source_cidr_blocks" {
   type        = list(string)
   description = "List of source CIDR blocks."
+  default     = []
 }
 
 variable "engine_version" {
