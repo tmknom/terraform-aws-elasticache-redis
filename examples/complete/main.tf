@@ -1,7 +1,7 @@
 module "elasticache_redis" {
   source                = "../../"
   name                  = "example"
-  number_cache_clusters = 2
+  num_cache_clusters = 2
   node_type             = "cache.m3.medium"
 
   engine_version             = "5.0.0"

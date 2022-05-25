@@ -1,7 +1,7 @@
 module "elasticache_redis" {
   source                = "../../"
   name                  = "example"
-  number_cache_clusters = 2
+  num_cache_clusters = 2
   node_type             = "cache.m3.medium"
 
   subnet_ids         = module.vpc.public_subnet_ids
