@@ -86,7 +86,8 @@ resource "aws_elasticache_replication_group" "default" {
   apply_immediately = var.apply_immediately
 
   # A user-created description for the replication group.
-  replication_group_description = var.description
+  description = var.description
+  # replication_group_description = var.description
 
   # A mapping of tags to assign to the resource.
   tags = merge({ "Name" = var.name }, var.tags)
