@@ -21,9 +21,9 @@ resource "aws_elasticache_replication_group" "default" {
 
   # The number of clusters this replication group initially has.
   # If automatic_failover_enabled is true, the value of this parameter must be at least 2.
-  # The maximum permitted value for number_cache_clusters is 6 (1 primary plus 5 replicas).
+  # The maximum permitted value for num_cache_clusters is 6 (1 primary plus 5 replicas).
   # https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Scaling.RedisReplGrps.html
-  number_cache_clusters = var.number_cache_clusters
+  num_cache_clusters = var.num_cache_clusters
 
   # The compute and memory capacity of the nodes in the node group (shard).
   # Generally speaking, the current generation types provide more memory and computational power at lower cost
@@ -86,7 +86,8 @@ resource "aws_elasticache_replication_group" "default" {
   apply_immediately = var.apply_immediately
 
   # A user-created description for the replication group.
-  replication_group_description = var.description
+  description = var.description
+  # replication_group_description = var.description
 
   # A mapping of tags to assign to the resource.
   tags = merge({ "Name" = var.name }, var.tags)

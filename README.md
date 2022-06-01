@@ -30,7 +30,7 @@ This module provides recommended settings:
 module "elasticache_redis" {
   source                = "git::https://github.com/tmknom/terraform-aws-elasticache-redis.git?ref=tags/2.0.0"
   name                  = "example"
-  number_cache_clusters = 2
+  num_cache_clusters = 2
   node_type             = "cache.m3.medium"
 
   subnet_ids         = var.subnet_ids
@@ -45,7 +45,7 @@ module "elasticache_redis" {
 module "elasticache_redis" {
   source                = "git::https://github.com/tmknom/terraform-aws-elasticache-redis.git?ref=tags/2.0.0"
   name                  = "example"
-  number_cache_clusters = 2
+  num_cache_clusters = 2
   node_type             = "cache.m3.medium"
 
   engine_version             = "5.0.0"
@@ -95,7 +95,7 @@ module "elasticache_redis" {
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------------- | -------------- | ------------------------ | :------: |
 | name                       | The replication group identifier. This parameter is stored as a lowercase string.                                         | `string`       | n/a                      |   yes    |
 | node_type                  | The compute and memory capacity of the nodes in the node group.                                                           | `string`       | n/a                      |   yes    |
-| number_cache_clusters      | The number of cache clusters (primary and replicas) this replication group will have.                                     | `string`       | n/a                      |   yes    |
+| num_cache_clusters         | The number of cache clusters (primary and replicas) this replication group will have.                                     | `string`       | n/a                      |   yes    |
 | source_cidr_blocks         | List of source CIDR blocks.                                                                                               | `list(string)` | n/a                      |   yes    |
 | subnet_ids                 | List of VPC Subnet IDs for the cache subnet group.                                                                        | `list(string)` | n/a                      |   yes    |
 | vpc_id                     | VPC Id to associate with Redis ElastiCache.                                                                               | `string`       | n/a                      |   yes    |

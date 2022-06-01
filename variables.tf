@@ -3,7 +3,7 @@ variable "name" {
   description = "The replication group identifier. This parameter is stored as a lowercase string."
 }
 
-variable "number_cache_clusters" {
+variable "num_cache_clusters" {
   type        = string
   description = "The number of cache clusters (primary and replicas) this replication group will have."
 }
