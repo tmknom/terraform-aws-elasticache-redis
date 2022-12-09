@@ -76,6 +76,12 @@ variable "transit_encryption_enabled" {
   description = "Whether to enable encryption in transit."
 }
 
+variable "auth_token" {
+  type        = string
+  description = "The password used to access a password protected server. Can be specified only if `transit_encryption_enabled = true`."
+  default     = ""
+}
+
 variable "apply_immediately" {
   default     = false
   type        = bool

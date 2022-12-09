@@ -83,6 +83,8 @@ resource "aws_elasticache_replication_group" "default" {
   # apply_immediately applies only to modifications in node type, engine version, and changing the number of nodes in a cluster.
   # Other modifications, such as changing the maintenance window, are applied immediately.
   # https://docs.aws.amazon.com/AmazonElastiCache/latest/red-ug/Clusters.Modify.html
+  auth_token                  = var.auth_token != "" ? var.auth_token : null
+
   apply_immediately = var.apply_immediately
 
   # A user-created description for the replication group.
